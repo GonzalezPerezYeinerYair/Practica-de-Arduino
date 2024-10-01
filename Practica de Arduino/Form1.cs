@@ -15,8 +15,7 @@ namespace Practica_de_Arduino
     {
         public SerialPort ArduinoPort { get; }
 
-        public Form1()
-        {
+        public Form1(){
             InitializeComponent();
             ArduinoPort = new SerialPort();
             ArduinoPort.PortName = "COM4";
@@ -28,25 +27,39 @@ namespace Practica_de_Arduino
             this.btnEncender.Click += Encender_Click;
         }
 
-        private void Apagar_Click(object sender, EventArgs e)
-        {
+        private void Apagar_Click(object sender, EventArgs e){
             ArduinoPort.Write("b");
         }
 
-        private void Encender_Click (object sender, EventArgs e)
-        {
+        private void Encender_Click (object sender, EventArgs e){
             ArduinoPort.Write("a");
         }
-       /* private void CerrandoForm1(object sender, EventArgs e)
-        {
-            if (ArduinoPort.IsOpen) ArduinoPort.Close();
-
-        }*/
-
-        private void CerrandoForm1(object sender, FormClosingEventArgs e)
-        {
+       
+        private void CerrandoForm1(object sender, FormClosingEventArgs e){
             if (ArduinoPort.IsOpen) ArduinoPort.Close();
         }
     }
 }
- 
+/*const int pinLED  = 13;
+void setup() {
+
+Serial.begin(9600);
+pinMode(pinLED, OUTPUT);
+}
+
+void loop() {
+ if (Serial.available() >0){
+
+   int option = Serial.read();
+   if(option== 'b')
+   {
+     digitalWrite(pinLED, LOW);
+   }
+   if(option == 'a')
+   {
+
+     digitalWrite(pinLED, HIGH);
+   }
+ } 
+}
+*/
